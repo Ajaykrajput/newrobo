@@ -7,18 +7,18 @@ import "./App.css";
 function App() {
   const [robots, setRobots] = useState([]);
   const [searchfield, setSearchfield] = useState("");
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);  // for useEffect check purpose 
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) => setRobots(users));
     console.log(count);
-  }, [count]); ///   only run if count changes
+  }, []); ///   if you add count, only run if count changes.
   const onSearchchange = (event) => {
     setSearchfield(event.target.value);
   };
-  console.log(robots, searchfield);
+  // console.log(robots, searchfield);
   const filterdRobots = robots.filter((robot) => {
     return robot.name.toLowerCase().includes(searchfield.toLowerCase());
   });
